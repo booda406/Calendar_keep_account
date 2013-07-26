@@ -1,0 +1,16 @@
+<%= f.label :name, "Thing" %>
+<%= f.text_field :name %><br>
+
+<%= f.label :description, "Description" %>
+<%= f.text_area :description %><br>
+
+<%= f.label :when, "Date" %><br>
+<%= f.date_select :when %><br>
+
+<% if @event.errors.any? %>
+	<ul>
+		<% @event.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+	<% end %>

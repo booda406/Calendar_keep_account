@@ -1,0 +1,17 @@
+<h1>Events</h1>
+<ul>
+<% @events.each do |event| %>
+  <li>
+  <b><size=24><color=red><%= link_to event.name, event_path(event) %></b></size></color><br>
+  <%= link_to " (XML)", event_path(event, :format => :xml) %>
+    <%= link_to " (JSON)", event_path(event, :format => :json) %>
+  <td><%= event.when %></td><br>
+  <%= link_to 'Edit', edit_event_path(event) %>
+  <%= button_to 'Delete', event_path(event), :method => :delete %>
+  </li>
+<% end %>
+</ul>
+ <%= paginate @events %>
+<%= link_to 'New event', new_event_path%>
+<%= link_to "Atom feed", events_path(:format => :atom) %>
+ <p><%= link_to "Home", root_path %></p>
