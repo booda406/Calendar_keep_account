@@ -9,7 +9,7 @@ Demo::Application.routes.draw do
     root :to => "welcome#index"
 
   get "welcome/say_hello" => "welcome#say"
-  get "welcome" => "welcome#index"
+  get "welcome" => "welcome#index", :as => :welcome
   get "welcome/events" => "events#index"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
