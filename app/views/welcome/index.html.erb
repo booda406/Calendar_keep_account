@@ -1,6 +1,6 @@
 <p>Hola! It's <%= Time.now %></p>
 
-<%= calendar(:year => @year , :month => @month, :first_day_of_week => 1) do |d|
+<%= calendar(:year => 2004 , :month => 1, :first_day_of_week => 1) do |d|
       render_calendar_cell(d)
     end
 %>
