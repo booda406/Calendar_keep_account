@@ -7,3 +7,14 @@
 <%= link_to 'Next' , welcome_path(:month => @month+1) %>
 
 <p><%= link_to 'Events' , welcome_events_path %></p>
+
+<script>
+	$(document).ready(function(){
+		$("td").click(function(){
+			//alert($(this).attr("data-date"));
+			$("td").removeClass("today");
+			$(this).addClass("today");
+			window.location = "<%= show_date_path() %>?date_time="+$(this).attr("data-date");
+		});
+	});
+</script>

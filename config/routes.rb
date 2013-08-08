@@ -1,6 +1,19 @@
 Demo::Application.routes.draw do
   resources :people
-  resources :events
+
+  #post '/events/:when' => "events#create", :as => "events"
+  get '/events/:id/:edit' => "events#edit"
+  get '/events/show_date' => "events#show_date", :as => "show_date"
+  get '/events/:date_time/:id' => "events#show", :as => "show_event"
+  #put '/events/:when/:id' => "events#update", :as => "event"
+  #get '/events/:when/new' => "events#new", :as => "new_event"
+  #get '/events/:when/:id/edit' => "events#edit", :as => "edit_event"
+  resources :events do
+   collection do
+      get :search
+    end
+  end
+  resources :calendars
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/radar/by_star
+  revision: 453f100644d3b0e8ef00c5666ae817e8752bc268
+  specs:
+    by_star (2.1.0.beta2)
+      activerecord
+      chronic
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -30,6 +38,7 @@ GEM
     builder (3.1.4)
     calendar_helper (0.2.5)
       open4
+    chronic (0.9.1)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -115,6 +124,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  by_star!
   calendar_helper
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)

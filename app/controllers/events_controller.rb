@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
 	before_action :find_event, :only => [ :show, :edit, :update, :destroy]
 	def index
-		@events = Event.page(params[:page]).per(5)
+  		sort_by = (params[:order] == 'Date') ? 'date_time' : 'created_at'
+  		@events = Event.order(sort_by).page(params[:page]).per(5)
 
 		respond_to do |format|
     		format.html # index.html.erb
@@ -11,7 +12,8 @@ class EventsController < ApplicationController
   		end
 	end
 	def new
-		@event = Event.new
+		time = params[:date_time] ? params[:date_time] : Time.now
+		@event = Event.new(:date_time => time)
 	end
 	def create
 		@event = Event.new(event_params)
@@ -30,6 +32,9 @@ class EventsController < ApplicationController
     		format.json { render :json => { id: @event.id, name: @event.name }.to_json }
   		end
 	end
+	def show_date
+		@events = Event.by_day(params[:date_time]).page(params[:page]).per(5)
+	end
 	def edit
 	end
 	def update
@@ -45,12 +50,16 @@ class EventsController < ApplicationController
       	redirect_to events_url
  		flash[:alert] = "event was successfully deleted"
 	end
+	def search
+    	@events = Event.where( [ "name like ?", "%#{params[:keyword]}%" ]).page(params[:page]).per(5)
+    	render :action => :index
+	end
 	protected
 
 	def find_event
 		@event = Event.find(params[:id])
 	end
 	def event_params
-		params.require(:event).permit(:name, :description, :when)
+		params.require(:event).permit(:name, :description, :date_time)
 	end
 end

@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'kaminari'
 gem 'calendar_helper'
+gem 'by_star', :git => "git://github.com/radar/by_star"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
