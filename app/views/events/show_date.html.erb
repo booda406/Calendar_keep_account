@@ -1,0 +1,23 @@
+<h1>Events</h1>
+<%= form_tag search_events_path, :method => :get do %>
+    <%= text_field_tag "keyword" %>
+	<%= submit_tag "Search" %>
+<% end %>
+<ul>
+<% @events.each do |event| %>
+  <li>
+  <b><size=24><color=red><%= link_to event.name, event_path(:id => event.id) %></b></size></color><br>
+
+  <%= link_to 'Edit', edit_event_path(event) %>
+  <%= button_to 'Delete', event_path(event), :method => :delete %>
+  </li>
+<% end %>
+<br><%= link_to 'Sort by Date', events_path( :order => "Date") %>
+<br><%= link_to 'Sort by Default', events_path %>
+
+</ul>
+<%= paginate @events %>
+
+<%= link_to 'New event', new_event_path%>
+<%= link_to "Atom feed", events_path(:format => :atom) %>
+<p><%= link_to 'Back to Calendar', root_path %></p>
