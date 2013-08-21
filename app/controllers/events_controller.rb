@@ -2,7 +2,7 @@ class EventsController < ApplicationController
 	before_action :find_event, :only => [ :show, :edit, :update, :destroy]
 	def index
   		sort_by = (params[:order] == 'Date') ? 'date_time' : 'created_at'
-  		@events = Event.order(sort_by).page(params[:page]).per(5)
+  		@events = Event.order(sort_by).paginate(:page => params[:page], :per_page => 5)
 
 		respond_to do |format|
     		format.html # index.html.erb
@@ -12,8 +12,7 @@ class EventsController < ApplicationController
   		end
 	end
 	def new
-		time = params[:date_time] ? params[:date_time] : Time.now
-		@event = Event.new(:date_time => time)
+		@event = Event.new(:date_time => params[:date_time])
 	end
 	def create
 		@event = Event.new(event_params)
@@ -33,7 +32,7 @@ class EventsController < ApplicationController
   		end
 	end
 	def show_date
-		@events = Event.by_day(params[:date_time]).page(params[:page]).per(5)
+		@events = Event.by_day(params[:date_time]).paginate(:page => params[:page], :per_page => 5)
 	end
 	def edit
 	end
@@ -51,15 +50,16 @@ class EventsController < ApplicationController
  		flash[:alert] = "event was successfully deleted"
 	end
 	def search
-    	@events = Event.where( [ "name like ?", "%#{params[:keyword]}%" ]).page(params[:page]).per(5)
+    	@events = Event.where( [ "name like ?", "%#{params[:keyword]}%" ]).paginate(:page => params[:page], :per_page => 5)
     	render :action => :index
 	end
+
 	protected
 
 	def find_event
 		@event = Event.find(params[:id])
 	end
 	def event_params
-		params.require(:event).permit(:name, :description, :date_time)
+		params.require(:event).permit(:name, :description, :capacity, :univalent, :sum, :date_time)
 	end
 end

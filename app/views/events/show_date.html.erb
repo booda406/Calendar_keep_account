@@ -1,23 +1,46 @@
-<h1>Events</h1>
+<%- model_class = Event -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
 <%= form_tag search_events_path, :method => :get do %>
     <%= text_field_tag "keyword" %>
 	<%= submit_tag "Search" %>
 <% end %>
-<ul>
-<% @events.each do |event| %>
-  <li>
-  <b><size=24><color=red><%= link_to event.name, event_path(:id => event.id) %></b></size></color><br>
 
-  <%= link_to 'Edit', edit_event_path(event) %>
-  <%= button_to 'Delete', event_path(event), :method => :delete %>
-  </li>
-<% end %>
-<br><%= link_to 'Sort by Date', events_path( :order => "Date") %>
-<br><%= link_to 'Sort by Default', events_path %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:capacity) %></th>
+      <th><%= model_class.human_attribute_name(:univalent) %></th>
+      <th><%= model_class.human_attribute_name(:sum) %></th>
+      <th><%= model_class.human_attribute_name(:date_time) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+	<% @events.each do |event| %>
+  		<tr>
+  		  <td><%= link_to event.name, event_path(:id => event.id) %></td>
+  		  <td><%= event.description %></td>
+          <td><%= event.capacity %></td>
+          <td><%= event.univalent %></td>
+          <td><%= event.sum %></td>
+          <td><%= event.date_time %></td>
+          <td>
+  			<%= link_to t('.edit', :default => t("helpers.links.edit")), edit_event_path(event), :class => 'btn btn-mini' %>
+  			<%= link_to t('.delete', :default => t("helpers.links.destroy")), event_path(event), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger' %>
+  		</td>
+  	</tr>
+  	<% end %>
+  </tbody>
+</table>
 
-</ul>
-<%= paginate @events %>
+<br><%= will_paginate @events %>
 
-<%= link_to 'New event', new_event_path%>
-<%= link_to "Atom feed", events_path(:format => :atom) %>
-<p><%= link_to 'Back to Calendar', root_path %></p>
+<br><%= link_to t('.new', :default => t("helpers.links.new")),
+            new_event_path(:date_time => params[:date_time]),
+            :class => 'btn btn-primary' %>
+

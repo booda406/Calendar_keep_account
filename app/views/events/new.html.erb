@@ -1,5 +1,13 @@
-<%= form_for @event, :url => events_path do |f| %>
-    <%= render :partial => 'form', :locals => { :f => f } %>
-    <%= f.submit "Create" %>
-<% end %>
-<%= link_to 'Back', events_path %>
+<%- model_class = Event -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<%= render :partial => 'form' %>
+
+<script>
+$("#event_univalent").change(fun2);
+function fun2(){
+	var sum = $("#event_univalent").val() * $("#event_capacity").val();
+	$("#event_sum").val(sum);
+}
+</script>

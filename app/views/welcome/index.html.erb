@@ -1,12 +1,11 @@
-<p>Hola! It's <%= Time.now %></p>
-<p><%= link_to 'Hello!' , welcome_say_hello_path %></p>
-
-<%= link_to 'Prev' , welcome_path(:month => @month-1) %>
-<%= calendar(:year => @year, :month => @month, :first_day_of_week => 1)
-%>
-<%= link_to 'Next' , welcome_path(:month => @month+1) %>
-
-<p><%= link_to 'Events' , welcome_events_path %></p>
+<h2>哈摟! 現在是 <%= Time.now %></h2>
+<hr>
+<h4><%= link_to 'Hello!' , welcome_say_hello_path %></h4>
+<span>
+<%= link_to 'Prev' , welcome_path(:year => @year, :month => @month-1), :class => "btn btn-info", :style => "margin-left:325px;"%>
+<%= link_to 'Next' , welcome_path(:year => @year, :month => @month+1), :class => "btn btn-info", :style => "margin-left:100px;" %>
+</span>
+<%= calendar(:year => @year, :month => @month, :first_day_of_week => 1)%>
 
 <script>
 	$(document).ready(function(){

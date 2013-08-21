@@ -13,13 +13,13 @@ class WelcomeController < ApplicationController
 		else
 			@month = Time.zone.now.month
 		end
-		if @month > 12
-			@year + 1
+		if 	@month > 12 
+			@year = @year + 1
 			@month = 1
 		end
-		if @month < 1
-			@year - 1
-			@month =12
+		if 	@month < 1
+			@year = @year - 1
+			@month = 12
 		end
 	end
 end

@@ -11,20 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130807084110) do
+ActiveRecord::Schema.define(version: 20130820080456) do
+
+  create_table "categories", force: true do |t|
+    t.integer  "event_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "companies", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "events", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.boolean  "is_public"
-    t.integer  "capacity"
+    t.integer  "capacity",                default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status"
+    t.integer  "univalent",   limit: 255, default: 0, null: false
     t.datetime "date_time"
-    t.integer  "year"
-    t.integer  "month"
-    t.integer  "first_day_of_week"
+    t.integer  "sum"
+    t.integer  "company_id"
   end
 
   create_table "people", force: true do |t|
