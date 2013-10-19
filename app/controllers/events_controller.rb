@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 	before_action :find_event, :only => [ :show, :edit, :update, :destroy]
-	before_action :authenticate_user!, :only => [ :show, :edit, :new, :update, :destroy]
+	before_action :authenticate_user!, :only => [ :index, :show, :edit, :new, :update, :destroy]
 
 	def index
   		sort_by = (params[:order] == 'Date') ? 'date_time' : 'created_at'
