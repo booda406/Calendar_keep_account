@@ -23,8 +23,8 @@
   <tbody>
 	<% @events.each do |event| %>
   		<tr>
-  		  <td><%= link_to event.name, event_path(:id => event.id) %></td>
-  		  <td><%= event.description %></td>
+  		  <td><%= link_to event.company.name, event_path(:id => event.id) %></td>
+  		  <td><%= event.category.name %></td>
           <td><%= event.capacity %></td>
           <td><%= event.univalent %></td>
           <td><%= event.sum %></td>

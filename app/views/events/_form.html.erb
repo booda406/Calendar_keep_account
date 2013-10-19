@@ -2,31 +2,28 @@
   
   <div class="control-group">
     <div class="controls">
-      <%= f.input :name, :collection => Company.all, prompt: "Choose a company" %>
-      <!--<%= f.association :company, collection: Company.all(order: 'name'), prompt: "Choose a Company" %>-->
+      <%= f.input :company_id, :label => :客戶, :collection => Company.all, prompt: "Choose a company" %>
     </div>
-  </div>
+  </div>  
   <div class="control-group">
-    <!--<%= f.label :description, :class => 'control-label' %>-->
     <div class="controls">
-      <!--<%= f.text_field :description, :class => 'text_field' %>-->
-    <%= f.input :description, collection: Category.all, prompt: "Choose a category" %>
+    <%= f.input :category_id, :label => :產品, :collection => Category.all, prompt: "Choose a category" %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :capacity, :class => 'control-label' %>
+    <%= f.label :數量, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :capacity, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :univalent, :class => 'control-label' %>
+    <%= f.label :單價, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :univalent, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :sum, :class => 'control-label' %>
+    <%= f.label :總價, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :sum, :class => 'text_field' %>
     </div>
@@ -44,3 +41,9 @@
                 :back, :class => 'btn' %>
   </div>
 <% end %>
+
+<script>
+if ($("#event_company_id").change(['1','2','5','6','7','8','9','10'])) {
+$("#event_name").val("玄聖殿","sai");
+};
+</script>

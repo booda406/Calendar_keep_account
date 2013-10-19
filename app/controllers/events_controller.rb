@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 	before_action :find_event, :only => [ :show, :edit, :update, :destroy]
+	before_action :authenticate_user!, :only => [ :show, :edit, :new, :update, :destroy]
+
 	def index
   		sort_by = (params[:order] == 'Date') ? 'date_time' : 'created_at'
   		@events = Event.order(sort_by).paginate(:page => params[:page], :per_page => 5)
@@ -60,6 +62,6 @@ class EventsController < ApplicationController
 		@event = Event.find(params[:id])
 	end
 	def event_params
-		params.require(:event).permit(:name, :description, :capacity, :univalent, :sum, :date_time)
+		params.require(:event).permit(:company_id, :category_id, :capacity, :univalent, :sum, :date_time)
 	end
 end
