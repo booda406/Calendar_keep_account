@@ -2,8 +2,8 @@
 <hr>
 <h4><%= link_to 'Hello!' , welcome_say_hello_path %></h4>
 <span>
-<%= link_to 'Prev' , welcome_path(:year => @year, :month => @month-1), :class => "btn btn-info", :style => "margin-left:325px;"%>
-<%= link_to 'Next' , welcome_path(:year => @year, :month => @month+1), :class => "btn btn-info", :style => "margin-left:100px;" %>
+<%= link_to 'Prev' , welcome_path(:year => @year, :month => @month-1), :class => "btn btn-info", :style => "margin-left:275px;"%>
+<%= link_to 'Next' , welcome_path(:year => @year, :month => @month+1), :class => "btn btn-info", :style => "margin-left:50px;" %>
 </span>
 <%= calendar(:year => @year, :month => @month, :first_day_of_week => 1)%>
 
