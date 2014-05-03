@@ -26,6 +26,10 @@ Demo::Application.routes.draw do
   get "welcome/say_hello" => "welcome#say"
   get "welcome" => "welcome#index", :as => :welcome
   get "welcome/events" => "events#index"
+  get "welcome/companies" => "welcome#company", as: :company
+  post "welcome/companies" => "welcome#create_company"
+  get "welcome/categories" => "welcome#category", as: :category
+  post "welcome/categories" => "welcome#create_category"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

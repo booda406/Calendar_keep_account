@@ -52,6 +52,8 @@
             <ul class="nav">
               <li><%= link_to "Calendar", welcome_path  %></li>
                   <% if user_signed_in? %>
+              <li><%= link_to "建立廟宇", company_path %></li>
+              <li><%= link_to "建立種類", category_path %></li>
               <li><%= link_to("登出", destroy_user_session_path ) %></li>
                   <% end %>
             </ul>
