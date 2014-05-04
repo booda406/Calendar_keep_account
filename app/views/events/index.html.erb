@@ -12,10 +12,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:capacity) %></th>
-      <th><%= model_class.human_attribute_name(:univalent) %></th>
-      <th><%= model_class.human_attribute_name(:sum) %></th>
       <th><%= model_class.human_attribute_name(:date_time) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -23,11 +20,9 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= link_to event.company.name,event_path(event) %></td>
+        <td><%= link_to event.company.name, event_path(event) %></td>
         <td><%= event.category.name %></td>
         <td><%= event.capacity %></td>
-        <td><%= event.univalent %></td>
-        <td><%= event.sum %></td>
         <td><%= event.date_time.strftime("%F") %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

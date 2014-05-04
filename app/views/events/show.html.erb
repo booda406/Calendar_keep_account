@@ -7,7 +7,6 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:capacity) %></th>
       <th><%= model_class.human_attribute_name(:univalent) %></th>
       <th><%= model_class.human_attribute_name(:sum) %></th>
@@ -17,7 +16,6 @@
   <tbody>
       <tr>
         <td><%= @event.company.name %></td>
-        <td><%= @event.category.description %></td>
         <td><%= @event.capacity %></td>
         <td><%= @event.univalent %></td>
         <td><%= @event.sum %></td>
