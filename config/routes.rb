@@ -1,6 +1,6 @@
 Demo::Application.routes.draw do
-  devise_for :users
-  devise_for :models
+  devise_for :users, skip: :registrations
+  # devise_for :models
   resources :people
 
   #post '/events/:when' => "events#create", :as => "events"
