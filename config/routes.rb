@@ -26,10 +26,18 @@ Demo::Application.routes.draw do
   get "welcome/say_hello" => "welcome#say"
   get "welcome" => "welcome#index", :as => :welcome
   get "welcome/events" => "events#index"
+  
   get "welcome/companies" => "welcome#company", as: :company
   post "welcome/companies" => "welcome#create_company"
+  get "welcome/company/:id" => "welcome#edit_company", as: :edit_company
+  patch "welcome/company/:id" => "welcome#update_company"
+  delete "welcome/company/:id" => "welcome#destroy_company"
+
   get "welcome/categories" => "welcome#category", as: :category
   post "welcome/categories" => "welcome#create_category"
+  get "welcome/category/:id" => "welcome#edit_category", as: :edit_category
+  patch "welcome/category/:id" => "welcome#update_category"
+  delete "welcome/category/:id" => "welcome#destroy_category"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

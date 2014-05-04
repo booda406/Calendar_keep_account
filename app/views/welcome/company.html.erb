@@ -4,6 +4,8 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -11,6 +13,8 @@
     <% @companies.each do |company| %>
       <tr>
         <td><%= company.name %></td>
+        <td><%= link_to "修改", edit_company_path(company) %></td>
+        <td><%= link_to '刪除', edit_company_path(company), method: :delete, data: { confirm: '你確定嗎?' } %></td>
       </tr>
     <% end %>
   </tbody>
