@@ -54,7 +54,7 @@ class EventsController < ApplicationController
 	def search
 		@companies = Company.search(params[:keyword])
 		@companies.each do |company|
-    		@events = Event.where( company_id: company.id ).paginate(:page => params[:page], :per_page => 5)
+    		@events = Event.where( company_id: company.id ).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
 		end
 		if @events.nil?
 			@events = Event.all.paginate(:page => params[:page], :per_page => 5)
