@@ -52,9 +52,9 @@ class EventsController < ApplicationController
  		flash[:alert] = "event was successfully deleted"
 	end
 	def search
-		@categorys = Category.search(params[:keyword])
-		@categorys.each do |category|
-    		@events = Event.where( category_id: category.id ).paginate(:page => params[:page], :per_page => 5)
+		@companies = Company.search(params[:keyword])
+		@companies.each do |company|
+    		@events = Event.where( company_id: company.id ).paginate(:page => params[:page], :per_page => 5)
 		end
 		if @events.nil?
 			@events = Event.all.paginate(:page => params[:page], :per_page => 5)
