@@ -55,7 +55,13 @@ class EventsController < ApplicationController
 		@categorys = Category.search(params[:keyword])
 		@categorys.each do |category|
     		@events = Event.where( category_id: category.id ).paginate(:page => params[:page], :per_page => 5)
-	    end
+		end
+		if @events.nil?
+			@events = Event.all.paginate(:page => params[:page], :per_page => 5)
+			flash[:notice] = "找不到您所輸入的名字"
+		else
+			flash[:notice] = ""
+		end
     	render :action => :index
 	end
 
