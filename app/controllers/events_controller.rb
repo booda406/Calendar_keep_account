@@ -52,7 +52,10 @@ class EventsController < ApplicationController
  		flash[:alert] = "event was successfully deleted"
 	end
 	def search
-    	@events = Event.where( [ "name like ?", "%#{params[:keyword]}%" ]).paginate(:page => params[:page], :per_page => 5)
+		@categorys = Category.search(params[:keyword])
+		@categorys.each do |category|
+    		@events = Event.where( category_id: category.id ).paginate(:page => params[:page], :per_page => 5)
+	    end
     	render :action => :index
 	end
 
