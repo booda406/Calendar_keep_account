@@ -36,6 +36,9 @@ gem "twitter-bootstrap-rails", :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'will_paginate', '~> 3.0'
 gem 'simple_form'
 
+# for translation
+gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
+
 #log_in
 gem 'devise'
 

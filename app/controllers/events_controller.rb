@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
 	def index
   		sort_by = (params[:order] == 'Date') ? 'date_time' : 'created_at'
-  		@events = Event.order(sort_by).order('id DESC').paginate(:page => params[:page], :per_page => 5)
+  		@events = Event.order(sort_by).order('id DESC').paginate(:page => params[:page], :per_page => 10)
 
 		respond_to do |format|
     		format.html # index.html.erb
@@ -34,7 +34,7 @@ class EventsController < ApplicationController
   		end
 	end
 	def show_date
-		@events = Event.by_day(params[:date_time]).order('id DESC').paginate(:page => params[:page], :per_page => 5)
+		@events = Event.by_day(params[:date_time]).order('id DESC').paginate(:page => params[:page], :per_page => 10)
 	end
 	def edit
 	end
@@ -54,10 +54,10 @@ class EventsController < ApplicationController
 	def search
 		@companies = Company.search(params[:keyword])
 		@companies.each do |company|
-    		@events = Event.where( company_id: company.id ).order('id DESC').paginate(:page => params[:page], :per_page => 5)
+    		@events = Event.where( company_id: company.id ).order('id DESC').paginate(:page => params[:page], :per_page => 10)
 		end
 		if @events.nil?
-			@events = Event.all.order('id DESC').paginate(:page => params[:page], :per_page => 5)
+			@events = Event.all.order('id DESC').paginate(:page => params[:page], :per_page => 10)
 			flash[:notice] = "找不到您所輸入的名字"
 		else
 			flash[:notice] = ""

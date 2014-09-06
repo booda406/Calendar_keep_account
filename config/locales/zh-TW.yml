@@ -1,0 +1,28 @@
+zh-TW:
+  cancel: 返回
+  destroy: 刪除
+  edit: 編輯
+  back: 返回
+  new: 新建
+  New: 新建
+  activerecord:
+    models:
+      event: 蠟燭訂單
+    attributes:
+      event:
+        company_id: 客戶名稱
+        category_id: 產品名稱
+  helpers:
+    actions: "操作"
+    links:
+      back: "返回"
+      cancel: "取消"
+      confirm: "確定刪除?"
+      destroy: "刪除"
+      new: "新增"
+      edit: "編輯"
+    titles:
+      edit: "編輯 %{model}"
+      save: "儲存 %{model}"
+      new: "新增 %{model}"
+      delete: "刪除 %{model}"
