@@ -7,9 +7,9 @@ class StatisticsController < ApplicationController
 			if @company.nil?
 				redirect_to statistics_path
 			else
-				start_date = Date.strptime(params[:start_date], '%m/%d/%Y')
-				end_date = Date.strptime(params[:end_date], '%m/%d/%Y')
-		    	@events = Event.where( company_id: @company.id, date_time: start_date..end_date )
+				@start_date = Date.strptime(params[:start_date], '%m/%d/%Y')
+				@end_date = Date.strptime(params[:end_date], '%m/%d/%Y')
+		    	@events = Event.where( company_id: @company.id, date_time: @start_date..@end_date )
 				if !@events.nil?
 					Category.all.each do |c|
 						@statistics[c.name] = 0
