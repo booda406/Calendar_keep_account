@@ -38,6 +38,9 @@ Demo::Application.routes.draw do
   get "welcome/category/:id" => "welcome#edit_category", as: :edit_category
   patch "welcome/category/:id" => "welcome#update_category"
   delete "welcome/category/:id" => "welcome#destroy_category"
+
+  # for calculate statistics
+  get 'statistics' => 'statistics#show'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
