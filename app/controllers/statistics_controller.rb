@@ -8,8 +8,12 @@ class StatisticsController < ApplicationController
 			if @company.nil?
 				redirect_to statistics_path
 			else
-				@start_date = Date.strptime(params[:start_date], '%m/%d/%Y')
-				@end_date = Date.strptime(params[:end_date], '%m/%d/%Y')
+				if params[:start_date].empty? or params[:end_date].empty?
+					return false, flash[:notice] = "請選取日期範圍"
+				else
+					@start_date = Date.strptime(params[:start_date], '%m/%d/%Y')
+					@end_date = Date.strptime(params[:end_date], '%m/%d/%Y')
+				end
 		    	@events = Event.where( company_id: @company.id, date_time: @start_date..@end_date )
 				
 				if !@events.nil?
