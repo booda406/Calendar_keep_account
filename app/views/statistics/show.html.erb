@@ -18,14 +18,16 @@
       <th>客戶名稱</th>
       <th>產品名稱</th>
       <th>數量</th>
+      <th>價錢</th>
     </tr>
   </thead>
   <tbody>
-    <% @statistics.each do |category, count| %>
+    <% @statistics.each do |category, value| %>
       <tr>
         <td><%= @company.name %></td>
         <td><%= category %></td>
-        <td><%= count %></td>
+        <td><%= value["count"] %></td>
+        <td><%= value["price"] %></td>
       </tr>
     <% end %>
   </tbody>
